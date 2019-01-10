@@ -1,0 +1,72 @@
+<template>
+  <view class='page-container'>
+    <manual-test></manual-test>
+  </view>
+</template>
+<script>
+
+class Index {
+  data = {
+    tabs: [{
+      label: '手动测试',
+      labelStyle: 'color:#B2B2B2'
+    }, {
+      label: '自动测试',
+      labelStyle: 'color:#B2B2B2'
+    }],
+    activeLabel: '手动测试',
+    title: '一个title'
+
+  }
+  computed = {
+  }
+  watch = {
+  }
+  methods = {
+    handleTabTap(e) {
+      this.activeLabel = e.detail.label;
+    },
+
+  }
+  beforeCreate(res) {
+
+  }
+  created(res) {
+  }
+  beforeMount(res) {
+  }
+  mounted(res) {
+  }
+  beforeDestroy(res) {
+  }
+  destroyed(res) {
+  }
+
+};
+
+export default new Index();
+
+</script>
+<style scoped>
+.page-container {
+  padding-top: 20cpx;
+}
+</style>
+<script cml-type="json">
+{
+    "base": {
+        "usingComponents": {
+          "manual-test": "./manualTest/index",
+          "cml-console": "@didi/cml-console/cml-console",
+          "c-tabs": "@didi/chameleon-ui/components/c-tabs/c-tabs",
+          "c-tab-pane": "@didi/chameleon-ui/components/c-tab-pane/c-tab-pane",
+          "c-tab-pane-item": "@didi/chameleon-ui/components/c-tab-pane-item/c-tab-pane-item"
+      }
+    },
+    "wx": {
+        "navigationBarTitleText": "index",
+        "backgroundTextStyle": "dark",
+        "backgroundColor": "#E2E2E2"
+    }
+}
+</script>

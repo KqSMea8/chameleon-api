@@ -1,0 +1,18 @@
+{
+  "mode": "history",
+  "domain": "https://api.didialift.com",
+  "routes":[
+    {
+      "url": "/pages/index/index",
+      "path": "/pages/index/index",
+      "name": "首页",
+      "mock": "index.php"
+    },
+    {
+      "url": "/pages/navigateBack/index",
+      "path": "/pages/navigateBack/index",
+      "name": "navigateBack",
+      "mock": "index.php"
+    }
+  ]
+}
