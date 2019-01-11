@@ -407,7 +407,7 @@ class ManualTest {
     },
 
     openPage() {
-      cml.open('https://www.didiglobal.com?cml_addr=' + encodeURIComponent('http://172.22.138.75:8000/weex/open-chameleon-api.js'), {
+      cml.open('https://www.example.com?cml_addr=' + encodeURIComponent('https://static.didialift.com/pinche/gift/chameleon-ui-builtin/weex/chameleon-ui-builtin.js'), {
         wd: 'didichuxing',
         time: new Date()
       }, {
@@ -416,8 +416,8 @@ class ManualTest {
     },
 
     openPageClose() {
-      cml.open('https://www.didiglobal.com', {
-        wd: 'didichuxing',
+      cml.open('https://www.example.com', {
+        wd: 'chameleon',
         time: new Date()
       }, {
           closeCurrent: true
