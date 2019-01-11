@@ -113,10 +113,34 @@ interface UtilsInterface {
 
 <script cml-type="weex">
 import cmlBridge from '../../lib/sdk/cmlBridge';
+import { inSDK } from '../../lib/sdk/env';
 
 class Method implements UtilsInterface {
   request(params) {
-    cmlBridge.request(params);
+    if(inSDK()) {
+      cmlBridge.request(params);
+    }else {
+      const stream = weex.requireModule('stream');
+      let {
+        url, body, headers, method, cb
+      } = params;
+
+      stream.fetch({
+        url,
+        method,
+        headers: headers,
+        body,
+        type: 'text'
+      }, function (res) {
+        const { status, data, headers } = res;
+        cb({
+          status,
+          data,
+          headers
+        });
+      });
+
+    }
   }
 }
 

@@ -87,27 +87,55 @@ interface ClipBoardDataInterface {
 
 <script cml-type="weex">
     import cmlBridge from '../../lib/sdk/cmlBridge';
+    import { inSDK } from '../../lib/sdk/env';
 
     class Method implements ClipBoardDataInterface {
       getClipBoardData(cb) {
-        cmlBridge.getClipBoardData({}, res =>{
-          const {errno, data, msg} = res;
-          cb({
-            errno: errno,
-            data: data,
-            errMsg: msg
-          })
-        });
+        if(inSDK()) {
+          cmlBridge.getClipBoardData({}, res =>{
+            const {errno, data, msg} = res;
+            cb({
+              errno,
+              data,
+              errMsg: msg
+            })
+          });
+        }else {
+          const clipboard = weex.requireModule('clipboard');
+          clipboard.getString(ret => {
+            ret.result == 'success' ? cb({
+              errno: 0,
+              errMsg: '',
+              data: ret.data
+            }) : null;
+            
+            ret.result === 'fail' ? cb({
+              errno: -1,
+              errMsg: 'weex clipboard.getString fail',
+              data: ''
+            }) : null;
+          });
+        }
       }
       setClipBoardData(text, cb) {
-        cmlBridge.setClipBoardData({data: text}, res =>{
-          const {errno, msg = ''} = res;
+        if(inSDK()) {
+          cmlBridge.setClipBoardData({data: text}, res =>{
+            const {errno, msg = ''} = res;
+            cb({
+              errno,
+              data: '',
+              errMsg: msg
+            })
+          });
+        }else {
+          const clipboard = weex.requireModule('clipboard');
+          clipboard.setString(text);
           cb({
-            errno,
-            data: '',
-            errMsg: msg
-          })
-        });
+            errno: 0,
+            errMsg: '',
+            data: text
+          });
+        }
       }
     }
     export default new Method();

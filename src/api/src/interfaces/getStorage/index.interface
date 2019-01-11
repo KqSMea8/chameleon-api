@@ -42,22 +42,40 @@ interface UtilsInterface {
 
 <script cml-type="weex">
 import cmlBridge from '../../lib/sdk/cmlBridge';
+import { inSDK } from '../../lib/sdk/env';
 
 class Method implements UtilsInterface {
   getStorage(key, cb) {
-    cmlBridge.getStorage({key}, res=>{
-      let { errno, msg = '', data } = res;
-      
-      if(data && typeof data == 'object') {
-        data = JSON.stringify(data);
-      }
-
-      cb({
-        errno,
-        errMsg: msg,
-        data
+    if(inSDK()) {
+      cmlBridge.getStorage({key}, res=>{
+        let { errno, msg = '', data } = res;
+        if(data && typeof data == 'object') {
+          data = JSON.stringify(data);
+        }
+        cb({
+          errno,
+          errMsg: msg,
+          data
+        });
       });
-    });
+    }else {
+      const storage = weex.requireModule('storage');
+      storage.getItem(key, function (e) {
+        if (e.result === 'success') {
+          cb({
+            errno: 0,
+            errMsg: '',
+            data: e.data
+          });
+        } else {
+          cb({
+            errno: -1,
+            errMsg: '获取失败或未存储',
+            data: ''
+          });
+        }
+      });
+    }
   }
 }
 export default new Method();

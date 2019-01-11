@@ -42,17 +42,38 @@ interface UtilsInterface {
 
 <script cml-type="weex">
 import cmlBridge from '../../lib/sdk/cmlBridge';
+import { inSDK } from '../../lib/sdk/env';
 
 class Method implements UtilsInterface {
   removeStorage(key, cb) {
-    cmlBridge.removeStorage({key}, res=>{
-      const { errno, msg = '' } = res;
-      cb({
-        errno,
-        errMsg: msg,
-        data: ''
+    if(inSDK()) {
+      cmlBridge.removeStorage({key}, res=>{
+        const { errno, msg = '' } = res;
+        cb({
+          errno,
+          errMsg: msg,
+          data: ''
+        });
       });
-    });
+    }else {
+      const storage = weex.requireModule('storage');
+      storage.removeItem(key, function (e) {
+        if (e.result === 'success') {
+          cb({
+            errno: 0,
+            errMsg: '',
+            data: ''
+          });
+        } else {
+          cb({
+            errno: -1,
+            errMsg: 'weex storage.removeItem fail',
+            data: ''
+          });
+        }
+      });
+    }
+  
   }
 }
 export default new Method();
