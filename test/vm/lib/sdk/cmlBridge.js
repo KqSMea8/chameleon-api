@@ -4,6 +4,12 @@ let cmlBridge = {
   canIUse: function (param, cb) {
     cb(true);
   },
+  inSDK: function () {
+    return true;
+  },
+  setTitle: function (param) {
+    global.document.title = param.title;
+  },
   getSDKInfo: function (param, cb) {
     cb({
       version: '0.0.6'

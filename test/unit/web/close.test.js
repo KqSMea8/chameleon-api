@@ -5,6 +5,7 @@ var expect = require('chai').expect;
 describe('关闭页面', function () {
   it('close: 关闭当前页面', function () {
     cml.close();
-    expect(global.visible.webview.page.closed).to.be["true"];
+    var closed = global.weex.visible.page.closed || global.visible.webview.page.closed;
+    expect(closed).to.be["true"];
   })
 })
