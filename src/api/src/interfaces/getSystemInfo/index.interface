@@ -34,8 +34,10 @@ interface UserInfoInterface {
               env: 'web',
               viewportWidth,
               viewportHeight,
-              extraParams,
-              ...extra
+              extraParams: {
+                ...extraParams,
+                ...extra
+              }
             });
           }
         });
@@ -70,8 +72,10 @@ class Method implements UserInfoInterface {
             env: 'web',
             viewportWidth,
             viewportHeight,
-            extraParams,
-            ...extra
+            extraParams: {
+              ...extraParams,
+              ...extra
+            }
           });
         }
       });
