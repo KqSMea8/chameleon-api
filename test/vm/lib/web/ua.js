@@ -2,14 +2,13 @@
  * 存放关于所处环境判断的方法
  */
 let ua = window.navigator.userAgent;
-let isSDKWebview = true;
 
 /**
- * 判断是在ChameleonSDK webview中
+ * 判断是在ChameleonSDK中
  * @returns {boolean}
  */
 export function inSDK() {
-  return isSDKWebview;
+  return true;
 }
 
 /**

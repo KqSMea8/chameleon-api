@@ -8,8 +8,12 @@ cml.config.merge({
   enableGlobalCheck: true,
   globalCheckWhiteList: ['.spec.js'],
   cmlNpm: [
+    'chameleon-bridge',
     'chameleon-runtime',
-    'chameleon-store'
+    'chameleon-store',
+    'cml-ui',
+    'chameleon-ui-builtin',
+    'chameleon-api'
   ],
   cmlComponents: [
   ],

@@ -18,10 +18,10 @@ export default new App();
 /*只作用于 web body下的first-child 节点*/
 .app-root {
   position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0cpx;
+  bottom: 0cpx;
+  left: 0cpx;
+  right: 0cpx;
 }
 </style>
 
