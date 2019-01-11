@@ -28,13 +28,14 @@ interface UserInfoInterface {
         bridge.getSystemInfo({}, function (res) {
           const {errno, data} = res;
           if(errno == 0) {
-            const { os, viewportWidth, viewportHeight, ...extra } = data;
+            const { os, viewportWidth, viewportHeight, extraParams, ...extra } = data;
             cb({
               os,
               env: 'web',
               viewportWidth,
               viewportHeight,
-              extraParams: extra || {}
+              extraParams,
+              ...extra
             });
           }
         });
@@ -63,13 +64,14 @@ class Method implements UserInfoInterface {
       cmlBridge.getSystemInfo({}, function (res) {
         const {errno, data} = res;
         if(errno == 0) {
-          const { os, viewportWidth, viewportHeight, ...extra } = data;
+          const { os, viewportWidth, viewportHeight, extraParams, ...extra } = data;
           cb({
             os,
             env: 'web',
             viewportWidth,
             viewportHeight,
-            extraParams: extra || {}
+            extraParams,
+            ...extra
           });
         }
       });
