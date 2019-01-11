@@ -87,7 +87,10 @@ class Method implements UserInfoInterface {
         env: 'weex',
         viewportWidth,
         viewportHeight,
-        extraParams: extraParams || {}
+        extraParams: {
+          ...extraParams,
+          os
+        }
       };
            
       cb(systemInfo);

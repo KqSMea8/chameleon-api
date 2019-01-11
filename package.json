@@ -1,6 +1,6 @@
 {
   "name": "chameleon-api",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "chameleon-api for chameleon app",
   "main": "index.js",
   "author": {
@@ -33,17 +33,17 @@
     "src"
   ],
   "dependencies": {
-    "chameleon-bridge": "0.0.5",
+    "chameleon-bridge": "0.0.7",
     "fetch-detector": "^1.0.1",
     "fetch-ie8": "^1.5.0"
   },
   "devDependencies": {
-    "@didi/chameleon": "^4.0.5",
-    "@didi/chameleon-store": "^1.0.1",
-    "@didi/chameleon-ui": "^2.0.4",
-    "@didi/chameleon-ui-builtin": "^2.0.9",
+    "chameleon-runtime": "^0.0.2",
+    "chameleon-store": "^0.0.3",
+    "cml-ui": "^0.0.2",
+    "chameleon-ui-builtin": "^0.0.2",
+    "chameleon-api": "^0.0.9",
     "@didi/cml-console": "0.0.2",
-    "@didi/weex-bridge": "^1.0.3",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
