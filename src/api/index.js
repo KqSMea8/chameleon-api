@@ -1,5 +1,6 @@
 import requestAnimationFrame from './src/interfaces/requestAnimationFrame/index.js';
 import cancelAnimationFrame from './src/interfaces/cancelAnimationFrame/index.js';
+import createAnimation from './src/interfaces/createAnimation/index.js';
 import canIUse from './src/interfaces/canIUse/index.js';
 import chooseImage from './src/interfaces/chooseImage/index.js';
 import close from './src/interfaces/close/index.js';
@@ -31,6 +32,7 @@ import getLaunchOptionsSync from './src/interfaces/getLaunchOptionsSync/index.js
 export default {
   requestAnimationFrame,
   cancelAnimationFrame,
+  createAnimation,
   canIUse,
   chooseImage,
   close,

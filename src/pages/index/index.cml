@@ -174,7 +174,12 @@
           c-bind:onclick="getLocationInfo"
         ></button>
       </c-folding-panel>
-      <c-folding-panel title='requestAnimationFrame'>
+      <c-folding-panel title='动画'>
+        <button
+          text="跳转到动画demo"
+          class="api-btn"
+          c-bind:onclick="goToAnimPage"
+        ></button>
         <button
           text="点击调用requestAnimationFrame"
           class="api-btn"
@@ -585,6 +590,12 @@ class ManualTest {
         cml.showToast({
           message: JSON.stringify('success')
         })
+      })
+    },
+    
+    goToAnimPage() {
+      cml.navigateTo({
+        path: '/pages/animation/animation'
       })
     },
 
