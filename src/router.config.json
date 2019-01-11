@@ -1,6 +1,6 @@
 {
-  "mode": "history",
-  "domain": "https://api.didialift.com",
+  "mode": "hash",
+  "domain": "",
   "routes":[
     {
       "url": "/pages/index/index",
