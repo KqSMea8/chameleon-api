@@ -1,4 +1,4 @@
-import cpx2px from '../../cpx2px';
+import { cpx2px } from '../_util';
 import { isNum } from '../../../lib/utils';
 import { rotateStyles, isNumTypeStyles } from './common.js';
 

@@ -5,6 +5,7 @@
     checkNumber(param: Number): void;
     checkString(param: String): void;
     checkObject(param: CMLObject): void;
+    getViewportWidth(): number;
   }
 
 </script>
@@ -61,6 +62,17 @@
     checkNumber(number) {}
     checkString(string) {}
     checkObject(object) {}
+
+    getViewportWidth() {
+      let viewportWidth;
+      if (window.innerWidth) {
+        viewportWidth = window.innerWidth;
+      } else if (document.documentElement && document.documentElement.clientWidth || document.body && document.body.clientWidth) {
+        viewportWidth = document.documentElement && document.documentElement.clientWidth || document.body && document.body.clientWidth;
+      }
+
+      return viewportWidth;
+    }
 
     exportMiddleWare(param) {
       return {
@@ -142,6 +154,7 @@
     checkNumber(number) {}
     checkString(string) {}
     checkObject(object) {}
+    getViewportSize() { return 0 }
 
     exportMiddleWare(param) {
       return {
@@ -207,6 +220,11 @@
     checkString(string) {}
     checkObject(object) {}
 
+    getViewportWidth() {
+      const { windowWidth } = wx.getSystemInfoSync();
+      return windowWidth;
+    }
+
     exportMiddleWare(param) {
       return createAnimationFuc(param.updateQueue.map(function(tick) {
         return {
@@ -263,6 +281,11 @@
     checkNumber(number) {}
     checkString(string) {}
     checkObject(object) {}
+
+    getViewportWidth() {
+      const { windowWidth } = wx.getSystemInfoSync();
+      return windowWidth;
+    }
     
     exportMiddleWare(param) {
       return createAnimationFuc(param.updateQueue.map(function(tick) {

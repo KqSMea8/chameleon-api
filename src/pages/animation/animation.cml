@@ -62,7 +62,6 @@ class CAnimation {
   }
   methods = {
     rotate () {
-      console.log("rotate:", this.current_rotate);
       let animationCreation = animation;
       while (this.current_rotate !== 360) {
         this.current_rotate += 90;
@@ -143,6 +142,7 @@ class CAnimation {
     width () {
       //fixbug  修复weex端缩小容器宽高内部字体位置不变bug
       this.current_width = this.current_width === 250 ? 125 : 250;
+
       if (interfaces.isWeex) {
         let textTranslateX = this.current_width === 250 ? 0 : -62;
         this.animationTextData = textAnimation

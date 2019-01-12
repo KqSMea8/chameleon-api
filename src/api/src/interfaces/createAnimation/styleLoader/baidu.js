@@ -1,8 +1,6 @@
-import cpx2px from '../../cpx2px';
+import { cpx2px } from '../_util';
 import { isStr, isNum } from '../../../lib/utils';
 import { isNumTypeStyles, rotateStyles } from './common.js';
-
-const conversionUnitStyles = ['translateX', 'translateY'];
 
 export const transformLoader = (styles, description) => {
   const returnStyles = {};
@@ -14,9 +12,7 @@ export const transformLoader = (styles, description) => {
     if (isNumTypeStyles.includes(key)) {
       if (isNum(value)) {
         // 转换单位
-        if (conversionUnitStyles.includes(key)) {
-          value = cpx2px(value);
-        }
+        value = cpx2px(value);
 
       } else {
         console.error('Parameter must be a number');
