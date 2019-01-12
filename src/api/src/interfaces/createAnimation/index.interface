@@ -154,7 +154,7 @@
     checkNumber(number) {}
     checkString(string) {}
     checkObject(object) {}
-    getViewportSize() { return 0 }
+    getViewportWidth() { return 0 }
 
     exportMiddleWare(param) {
       return {
