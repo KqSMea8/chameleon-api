@@ -1,6 +1,10 @@
 {
   "name": "chameleon-api",
+<<<<<<< HEAD
   "version": "0.0.16",
+=======
+  "version": "0.0.17",
+>>>>>>> d62813ebc715ccad621f44b13fd173ad2283a4ea
   "description": "chameleon-api for chameleon app",
   "main": "index.js",
   "author": {
@@ -33,7 +37,7 @@
     "src"
   ],
   "dependencies": {
-    "chameleon-bridge": "0.0.10",
+    "chameleon-bridge": "0.0.11",
     "fetch-detector": "^1.0.1",
     "fetch-ie8": "^1.5.0"
   },
@@ -43,6 +47,7 @@
     "cml-ui": "^0.0.2",
     "chameleon-ui-builtin": "^0.0.2",
     "chameleon-api": "^0.0.9",
+    "@didi/cml-console": "0.0.2",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
