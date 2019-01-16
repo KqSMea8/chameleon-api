@@ -39,7 +39,7 @@ cml.config.merge({
     },
     build: {
       analysis: false,
-      publicPath: `${publicPath}/web`,
+      publicPath: `${publicPath}/web/`,
       apiPrefix
     }
   },
@@ -47,11 +47,11 @@ cml.config.merge({
     dev: {
     },
     build: {
-      publicPath: `${publicPath}/weex`,
+      publicPath: `${publicPath}/weex/`,
       apiPrefix
     },
     custom: {
-      publicPath: `${publicPath}/wx`,
+      publicPath: `${publicPath}/wx/`,
       apiPrefix
     }
   }
