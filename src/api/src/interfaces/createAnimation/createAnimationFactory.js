@@ -58,7 +58,7 @@ const utils = {
 };
 
 
-const createAnimationFactory = function (description = {}, env = 'web', styleLoaderQueue = [], descriptionLoaderQueue = [], createAnimation = () => {}) {
+const createAnimationFactory = function (description = {}) {
   let updateQueue = [];
   // let stashQueue = [];
 
@@ -68,10 +68,6 @@ const createAnimationFactory = function (description = {}, env = 'web', styleLoa
   this.descriptions = description;
 
   this.styles = {};
-  this.env = env;
-  this.styleLoaderQueue = styleLoaderQueue;
-  this.descriptionLoaderQueue = descriptionLoaderQueue;
-  this.createAnimation = createAnimation;
 
   // 判断用户是否使用export
   this.useExport = '0';
@@ -82,7 +78,6 @@ const createAnimationFactory = function (description = {}, env = 'web', styleLoa
 
   this["export"] = function() {
     this.useExport = '1';
-
 
     const result = exportMiddleWare({
       id: this.id,

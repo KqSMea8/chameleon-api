@@ -1,6 +1,6 @@
 {
   "name": "chameleon-api",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "chameleon-api for chameleon app",
   "main": "index.js",
   "author": {
@@ -43,7 +43,6 @@
     "cml-ui": "^0.0.2",
     "chameleon-ui-builtin": "^0.0.2",
     "chameleon-api": "^0.0.9",
-    "@didi/cml-console": "0.0.2",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
