@@ -82,7 +82,7 @@
     </view>
     <button
       text="返回"
-      class="api-btn"
+      class="back-btn"
       c-bind:onclick="navigateBack"
     ></button>
   </view>
@@ -302,9 +302,9 @@ export default new CAnimation();
   padding: 20cpx 25cpx;
   background: #fafafa;
 }
-.api-btn {
+.back-btn {
   margin: auto;
-  margin-bottom: 40cpx;
+  margin-top: 60cpx;
 }
 </style>
 <script cml-type="json">
