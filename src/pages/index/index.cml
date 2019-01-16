@@ -273,18 +273,14 @@ class ManualTest {
   methods = {
 
     px2cpx() {
-      cml.px2cpx(1).then(cpx => {
-        cml.showToast({
-          message: cpx.toString()
-        })
+      cml.showToast({
+        message: cml.px2cpx(1).toString()
       })
     },
 
     cpx2px() {
-      cml.cpx2px(750).then(px => {
-        cml.showToast({
-          message: px.toString()
-        })
+      cml.showToast({
+        message: cml.cpx2px(750).toString()
       })
     },
 
@@ -346,7 +342,7 @@ class ManualTest {
         })
       })
     },
-    
+
     canIUseFalse() {
       cml.canIUse('showAnyToast').then(res => {
         cml.showToast({
@@ -592,7 +588,7 @@ class ManualTest {
         })
       })
     },
-    
+
     goToAnimPage() {
       cml.navigateTo({
         path: '/pages/animation/animation'

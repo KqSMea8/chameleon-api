@@ -1,42 +1,91 @@
 <template>
-<view class="page-contain">
-  <view class="container">
-    <view class="btn-box">
-      <text class="title">Transform</text>
-      <view class="btn-wraper">
-        <button text="Rotate" size="medium" c-bind:onclick="rotate"></button>
+  <view class="page-contain">
+    <view class="container">
+      <view class="btn-box">
+        <text class="title">Transform</text>
+        <view class="btn-wraper">
+          <button
+            text="Rotate"
+            size="medium"
+            c-bind:onclick="rotate"
+          ></button>
+        </view>
+        <view class="btn-wraper">
+          <button
+            text="Scale"
+            size="medium"
+            c-bind:onclick="scale"
+          ></button>
+        </view>
+        <view class="btn-wraper">
+          <button
+            text="Translate"
+            size="medium"
+            c-bind:onclick="translate"
+          ></button>
+        </view>
+        <view class="btn-wraper">
+          <button
+            text="Transform"
+            size="medium"
+            type="green"
+            c-bind:onclick="transform"
+          ></button>
+        </view>
+        <text class="title">Others</text>
+        <view class="btn-wraper">
+          <button
+            text="BgColor"
+            size="medium"
+            c-bind:onclick="backgroundColor"
+          ></button>
+        </view>
+        <view class="btn-wraper">
+          <button
+            text="Opacity"
+            size="medium"
+            c-bind:onclick="opacity"
+          ></button>
+        </view>
+        <view class="btn-wraper">
+          <button
+            text="width"
+            size="medium"
+            c-bind:onclick="width"
+          ></button>
+        </view>
+        <view class="btn-wraper">
+          <button
+            text="height"
+            size="medium"
+            c-bind:onclick="height"
+          ></button>
+        </view>
+        <view class="btn-wraper">
+          <button
+            text="All"
+            size="medium"
+            type="green"
+            c-bind:onclick="composite"
+          ></button>
+        </view>
       </view>
-      <view class="btn-wraper">
-        <button text="Scale" size="medium" c-bind:onclick="scale"></button>
-      </view>
-      <view class="btn-wraper">
-        <button text="Translate" size="medium" c-bind:onclick="translate"></button>
-      </view>
-      <view class="btn-wraper">
-        <button text="Transform" size="medium" type="green" c-bind:onclick="transform"></button>
-      </view>
-      <text class="title">Others</text>
-      <view class="btn-wraper">
-        <button text="BgColor" size="medium" c-bind:onclick="backgroundColor"></button>
-      </view>
-      <view class="btn-wraper">
-        <button text="Opacity" size="medium" c-bind:onclick="opacity"></button>
-      </view>
-      <view class="btn-wraper">
-        <button text="width" size="medium" c-bind:onclick="width"></button>
-      </view>
-      <view class="btn-wraper">
-        <button text="height" size="medium" c-bind:onclick="height"></button>
-      </view>
-      <view class="btn-wraper">
-        <button text="All" size="medium" type="green" c-bind:onclick="composite"></button>
+      <view
+        class="animation-entity"
+        c-animation="{{animationData}}"
+      >
+        <text
+          class="animation-text"
+          c-animation="{{animationTextData}}"
+        >Anim</text>
       </view>
     </view>
-      <view class="animation-entity" c-animation="{{animationData}}">
-        <text class="animation-text" c-animation="{{animationTextData}}">Anim</text>
-      </view>
+    <button
+      text="返回"
+      class="api-btn"
+      c-bind:onclick="navigateBack"
+    ></button>
   </view>
-</view>
 </template>
 <script>
 import cml from '../../api/index.js';
@@ -61,7 +110,10 @@ class CAnimation {
     current_height: 250,
   }
   methods = {
-    rotate () {
+    navigateBack() {
+      cml.navigateBack()
+    },
+    rotate() {
       let animationCreation = animation;
       while (this.current_rotate !== 360) {
         this.current_rotate += 90;
@@ -76,7 +128,7 @@ class CAnimation {
       this.animationData = animationCreation.export();
       this.current_rotate = 0
     },
-    scale () {
+    scale() {
       this.current_scale = this.current_scale === 2 ? 1 : 2
       this.animationData = animation
         .scale(this.current_scale)
@@ -87,8 +139,8 @@ class CAnimation {
         })
         .export()
     },
-    translate () {
-      this.current_translate = this.current_translate === 50? -50 : 50;
+    translate() {
+      this.current_translate = this.current_translate === 50 ? -50 : 50;
       this.animationData = animation
         .translate(this.current_translate, this.current_translate)
         .step({
@@ -98,8 +150,8 @@ class CAnimation {
         })
         .export()
     },
-    transform () {
-      this.current_transform = this.current_transform[0] === 0 ?  [45, 1.2]:[0, 1];
+    transform() {
+      this.current_transform = this.current_transform[0] === 0 ? [45, 1.2] : [0, 1];
       this.animationData = animation
         .rotate(this.current_transform[0])
         .scale(this.current_transform[1])
@@ -117,7 +169,7 @@ class CAnimation {
         })
         .export()
     },
-    backgroundColor () {
+    backgroundColor() {
       this.current_color = this.current_color === '#F0AD4E' ? '#D9534F' : '#F0AD4E';
       this.animationData = animation
         .backgroundColor(this.current_color)
@@ -128,7 +180,7 @@ class CAnimation {
         })
         .export()
     },
-    opacity () {
+    opacity() {
       this.current_opacity = this.current_opacity === 1 ? 0.1 : 1;
       this.animationData = animation
         .opacity(this.current_opacity)
@@ -139,7 +191,7 @@ class CAnimation {
         })
         .export()
     },
-    width () {
+    width() {
       //fixbug  修复weex端缩小容器宽高内部字体位置不变bug
       this.current_width = this.current_width === 250 ? 125 : 250;
 
@@ -163,7 +215,7 @@ class CAnimation {
         })
         .export()
     },
-    height () {
+    height() {
       this.current_height = this.current_height === 250 ? 125 : 250;
       if (interfaces.isWeex) {
         let textTranslateY = this.current_height === 250 ? 0 : -62;
@@ -186,11 +238,11 @@ class CAnimation {
         })
         .export()
     },
-    composite () {
-      this.current_transform = this.current_transform[0] === 0 ?  [45, 1.5]:[0, 1];
+    composite() {
+      this.current_transform = this.current_transform[0] === 0 ? [45, 1.5] : [0, 1];
       this.current_color = this.current_color === '#F0AD4E' ? '#D9534F' : '#F0AD4E';
       this.current_opacity = this.current_opacity === 1 ? 0.1 : 1;
-      this.current_translate = this.current_translate === 50? -50 : 50;
+      this.current_translate = this.current_translate === 50 ? -50 : 50;
       this.current_width = this.current_width === 250 ? 125 : 250;
       this.current_height = this.current_height === 250 ? 125 : 250;
       this.animationData = animation
@@ -213,14 +265,13 @@ class CAnimation {
 export default new CAnimation();
 </script>
 <style scoped lang="less">
-
 .title {
   font-size: 45cpx;
   font-weight: 400;
   margin: 20cpx 0;
   padding: 8cpx 30cpx;
   background: #4a4c5b;
-  color:#FFFFFF;
+  color: #ffffff;
   display: block;
 }
 .animation-entity {
@@ -229,14 +280,14 @@ export default new CAnimation();
   height: 250cpx;
   top: 500cpx;
   left: 400cpx;
-  background-color: #F0AD4E;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  background-color: #f0ad4e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .animation-text {
-  color:#FFFFFF;
-  font-size:70cpx;
+  color: #ffffff;
+  font-size: 70cpx;
 }
 .btn-wraper {
   margin: 6cpx 10cpx;
@@ -250,6 +301,10 @@ export default new CAnimation();
   color: #000;
   padding: 20cpx 25cpx;
   background: #fafafa;
+}
+.api-btn {
+  margin: auto;
+  margin-bottom: 40cpx;
 }
 </style>
 <script cml-type="json">

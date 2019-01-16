@@ -6,10 +6,8 @@ export default function px2cpx(px) {
     console.error('Parameter must be a number');
     return;
   }
-  return new Promise((resolve, reject) => {
-    instance.getWidth(viewportWidth => {
-      let cpx = +(750 / viewportWidth * px).toFixed(3);
-      resolve(cpx);
-    });
-  })
+
+  const viewportWidth = instance.getWidth();
+  const cpx = +(750 / viewportWidth * px).toFixed(3);
+  return cpx;
 }
