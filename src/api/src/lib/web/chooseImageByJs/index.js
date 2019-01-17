@@ -21,12 +21,14 @@ export default class ChooseImageByJs {
     }, false);
   }
   chooseImage(params = {
-    quality: 0.8
+    quality: 0.9
   }, callback) {
     this.chooseImageCallback = callback;
-    this.fileInput.click();
+    let MouseEvents = document.createEvent('MouseEvents');
+    MouseEvents.initEvent('click', true, true);
+    this.fileInput.dispatchEvent(MouseEvents);
   }
-  //文件选择事件
+  // 文件选择事件
   onFileChange(e) {
     var me = this;
     var file = e.target.files[0];
@@ -45,8 +47,8 @@ export default class ChooseImageByJs {
     me.opt.onFileSelect ? me.opt.onFileSelect(e, next) : next();
 
     function next(isClip) {
-      //在iOS下，来自拍摄的图片当获取宽高时它们的值是反向的，而canvasResize有做标准化处理。
-      //这一步android消耗2000ms左右、iOS消耗500ms左右
+      // 在iOS下，来自拍摄的图片当获取宽高时它们的值是反向的，而canvasResize有做标准化处理。
+      // 这一步android消耗2000ms左右、iOS消耗500ms左右
       isClip = isClip === undefined ? true : isClip;
       var max = Math.max(Math.max(me.opt.outputWidth, me.opt.outputHeight), 1000);
       canvasResize(file, {
@@ -67,7 +69,7 @@ export default class ChooseImageByJs {
 
     }
   }
-  //压缩图片
+  // 压缩图片
   compress(data, cb) {
     var me = this;
     canvasResize(data, {
@@ -75,7 +77,7 @@ export default class ChooseImageByJs {
       width: me.opt.outputWidth,
       height: me.opt.outputHeight,
       crop: false,
-      quality: 80,
+      quality: 90,
       rotate: 0,
       callback: function (data, width, height) {
         cb(data);
