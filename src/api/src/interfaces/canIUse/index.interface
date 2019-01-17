@@ -42,7 +42,9 @@ export default new Method();
 
 <script cml-type="weex">
 import cmlBridge from '../../lib/sdk/cmlBridge';
+import { inSDK } from '../../lib/sdk/env';
 import { api } from '../../config';
+import { weexCanIUse } from './weex';
 
 class Method implements canIUseInterface {
   canIUse(metName, cb) {
@@ -57,14 +59,19 @@ class Method implements canIUseInterface {
       return;
     }
 
-    const method = api[metName].baseOn.sdk;
-    cmlBridge.canIUse({ method }, res => {
-      let result = true;
-      if(res.errno != 0) {
-        result = false;
-      }
-      cb(result);
-    })
+    if(inSDK()) {
+      const method = api[metName].baseOn.sdk;
+      cmlBridge.canIUse({ method }, res => {
+        let result = true;
+        if(res.errno != 0) {
+          result = false;
+        }
+        cb(result);
+      })
+    }else {
+      const method = api[metName].baseOn.weex;
+      cb(weexCanIUse(method));
+    }
   }
 }
 export default new Method();
