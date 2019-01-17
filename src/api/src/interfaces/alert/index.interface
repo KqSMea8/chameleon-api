@@ -4,8 +4,8 @@ type alertOpt = {
   confirmTitle: String
 }
 
-type successCallBack = () => void;
-type failCallBack = () => void;
+type successCallBack = (result: String) => void;
+type failCallBack = (result: String) => void;
 
 interface uiInterface {
   alert(opt: alertOpt, successCallBack: successCallBack, failCallBack: failCallBack): void,
@@ -36,9 +36,9 @@ class Method implements uiInterface {
     if(inSDK()) {
       cmlBridge.alert(opt, res => {
         if(res.errno == 0) {
-          successCallBack();
+          successCallBack(opt.confirmTitle);
         }else {
-          failCallBack();
+          failCallBack(opt.confirmTitle);
         }
       })
     }else {
@@ -71,10 +71,10 @@ class Method implements uiInterface {
       content: message,
       confirmText: confirmTitle,
       success() {
-        successCallBack();
+        successCallBack(confirmTitle);
       },
       fail() {
-        failCallBack();
+        failCallBack(confirmTitle);
       }
     });
   }

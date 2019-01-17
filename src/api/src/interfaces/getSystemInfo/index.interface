@@ -69,7 +69,7 @@ class Method implements UserInfoInterface {
           const { os, viewportWidth, viewportHeight, extraParams, ...extra } = data;
           cb({
             os,
-            env: 'web',
+            env: 'weex',
             viewportWidth,
             viewportHeight,
             extraParams: {
