@@ -75,7 +75,7 @@ interface UtilsInterface {
         query = '?' + query;
       }
       path = path + query;
-      wx.navigateTo({
+      wx.redirectTo({
         url: path
       });
     }
